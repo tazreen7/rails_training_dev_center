@@ -1,0 +1,22 @@
+<h1> Associate </h1>
+<% if session[:user_id] %>
+<%= form_for @value do |f| %>
+ <%= f.label :cerner_id %><br>
+ <%= f.text_field :cerner_id, value: session[:user_id]  %><br>
+<br>
+
+   <%= f.label :leave_status %><br>
+   <%= f.text_field :leave_status%><br>
+<br>
+   <%= f.label :start_date %><br>
+   <%= f.date_field :start_date%><br>
+<br>
+   <%= f.label :end_date %><br>
+   <%= f.date_field :end_date%><br>
+<br>
+   <%= f.label :type_of_request %><br>
+ <%= f.select :type_of_request, ["Work From Home","Vacation"]%><br>
+   <%= f.submit "Submit" %>
+
+<% end %>
+<% end %>

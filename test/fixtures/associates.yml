@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  leave_approval: MyString
+  start_date: 2019-09-30 09:43:20
+  end_date: 2019-09-30 09:43:20
+  type_of_request: MyString
+  cerner_id: MyString
+
+two:
+  leave_approval: MyString
+  start_date: 2019-09-30 09:43:20
+  end_date: 2019-09-30 09:43:20
+  type_of_request: MyString
+  cerner_id: MyString
