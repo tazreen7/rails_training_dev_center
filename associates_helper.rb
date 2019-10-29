@@ -1,0 +1,3 @@
+module AssociatesHelper
+  
+end
