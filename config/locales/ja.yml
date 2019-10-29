@@ -1,0 +1,10 @@
+ya:
+  activerecord:
+      models:
+        associate:
+          attributes:
+                  Leave Requests: "休暇申請"
+                  leave_approval: "理由"
+                  start_date: "開始日"
+                  end_date: "終了日"
+                  type_of_request: "休暇タイプ"

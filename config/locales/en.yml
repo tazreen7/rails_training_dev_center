@@ -28,6 +28,12 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+    models:
+        associate:
+          attributes:
+                     leave: "Requests"
+                     leave_approval: "REASON"
+                     start_date: "START DATE"
+                     end_date: "END DATE"
+                     type_of_request: "Leave Type"

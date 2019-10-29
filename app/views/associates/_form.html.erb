@@ -1,0 +1,52 @@
+<%= form_with(model: associate, local: true) do |form| %>
+  <% if associate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(associate.errors.count, "error") %> prohibited this associate from being saved:</h2>
+
+      <ul>
+        <% associate.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :leave_approval %>
+    <%= form.text_field :leave_approval %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.text_field :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.text_field :end_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cerner_id %>
+    <%= form.text_field :cerner_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :edit %>
+    <%= form.text_field :edit %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

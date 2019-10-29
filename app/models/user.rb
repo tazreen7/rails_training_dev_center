@@ -3,4 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-end
+         enum role: [:associate, :manager]
+has_many :associates
+validates :email, presence:true
+validates :encrypted_password, presence:true
+  end

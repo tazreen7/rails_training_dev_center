@@ -1,0 +1,89 @@
+<div class="navbar navbar-default navbar-static-top">
+   <div class="container">
+   <div>
+    <a class="navbar-brand" href="#" >Associate-Manager Interaction Portal</a>
+    <!-- <a class="navbar-brand" href="/"> -->
+    <!-- <a class="navbar-brand"
+      <%# <%= content_tag :li do %>
+      <%# <%= link_to 'Switch to English', locale: :en %> %>
+      <%# <% end unless current_page?(locale: :en) %> %>
+      <%# <%= content_tag :li do %> %>
+      <%# <%= link_to 'Switch to japanese', locale: :ja %> %>
+      <%# <% end unless current_page?(locale: :ja) %></a> -->
+    <a class="navbar-brand navbar-right" href='users/sign_out' method: :delete >Log Out</a>
+</div>
+   </div>
+ </div>
+
+  <table>
+     <% if current_user[:role]=="manager" %>
+     <h3> <%= t 'associate.attributes.leave'%> </h3>
+    <thead>
+      <tr>
+      <th>REASON</th>
+      <th>START DATE</th>
+      <th>END DATE</th>
+      <th>LEAVE TYPE</th>
+      <!-- <th>EDIT</th> -->
+      <th>STATUS</th>
+   </tr></thead>
+   <tbody>
+       <% @associates.each do |associate| %>
+         <tr>
+          <td><%= associate.leave_approval %></td>
+          <td><%=associate.start_date.strftime("%d/%m/%Y") %></td>
+          <td><%= associate.end_date.strftime("%d/%m/%Y") %></td>
+          <td><%= associate.type_of_request %></td>
+
+          <td><input type="button" onclick="window.location.href = '/associates/index';" value="Accept"%>
+   <input type="button" onclick="window.location.href = '/associates/index';" value="Reject"%>
+ </td>
+
+   </tr>
+
+
+   <%end%>
+ <%end%>
+
+   </tbody>
+
+
+</table>
+<% if current_user[:role]=="manager"  %>
+<%= will_paginate @associates, renderer: BootstrapPagination::Rails, previous_label: "Previous" , next_label: "Next", inner_window: 1,outer_window: 0 %>
+<%end%>
+
+ <table>
+  <% if current_user[:role]=="associate" || current_user[:role]=="manager" %>
+  <h3> Apply For Leave </h3>
+<p align="right">
+<input type="button" onclick="window.location.href = '/associates/new';" value="New Requests"/>
+</p>
+  <thead>
+    <tr>
+    <th>REASON</th>
+    <th>START DATE</th>
+    <th>END DATE</th>
+    <th>LEAVE TYPE</th>
+    <th>EDIT</th>
+    <th>STATUS</th>
+</tr>
+  </thead>
+<tbody>
+
+     <% @associates.each do |associate| %>
+       <tr>
+        <td><%= associate.leave_approval %></td>
+        <td><%=associate.start_date.strftime("%d/%m/%Y") %></td>
+        <td><%= associate.end_date.strftime("%d/%m/%Y") %></td>
+        <td><%= associate.type_of_request %></td>
+        <td><input type="button" onclick="window.location.href = '/associates/edit?id=<%= associate.id %>';" value="Edit"%></td>
+        <td></td>
+        </tr>
+          <% end %>
+<%end%>
+
+
+  </tbody>
+</table>
+<%= will_paginate @associates, renderer: BootstrapPagination::Rails, previous_label: "Previous" , next_label: "Next", inner_window: 1,outer_window: 0 %>

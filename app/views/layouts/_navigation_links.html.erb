@@ -1,0 +1,9 @@
+<li><%= link_to t(:associates), associate_path%></li>
+<%= content_tag :li do %>
+<%= link_to 'Switch to English', locale: :en %>
+<% end unless current_page?(locale: :en) %>
+
+#creating a navigation partial
+<%= content_tag :li do %>
+<%= link_to 'Switch to japanese', locale: :ja %>
+<% end unless current_page?(locale: :ja) %>

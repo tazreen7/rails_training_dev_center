@@ -10,16 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_041320) do
+ActiveRecord::Schema.define(version: 2019_10_28_140121) do
 
   create_table "associates", force: :cascade do |t|
-    t.string "leave_approval"
     t.datetime "start_date"
     t.datetime "end_date"
     t.string "type_of_request"
     t.string "cerner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "leave_approval"
+    t.string "email"
+    t.string "edit"
+    t.string "status"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -30,6 +34,10 @@ ActiveRecord::Schema.define(version: 2019_09_30_041320) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "manager_id"
+    t.integer "role"
+    t.string "username"
+    t.string "language"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
