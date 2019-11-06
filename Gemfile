@@ -7,12 +7,13 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
 end
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+
 gem 'rails', '~> 6.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 gem 'twitter-bootstrap-rails'
 gem 'client_side_validations'
+gem 'webmock'
 gem 'jquery-rails'
 gem 'devise-bootstrap-views'
 # Use Puma as the app server
@@ -40,7 +41,6 @@ gem 'will_paginate-bootstrap'
 gem 'bootstrap-sass', '3.3.6'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'jquery-rails'
 #display data in tables
 gem "table_print"
 gem 'simplecov', require: false, group: :test

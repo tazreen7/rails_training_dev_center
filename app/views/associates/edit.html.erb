@@ -1,0 +1,31 @@
+<div class="navbar navbar-default navbar-static-top">
+   <div class="container">
+   <div>
+    <a class="navbar-brand" href="#" >Associate-Manager Interaction Portal</a>
+    <a class="navbar-brand navbar-right" href='users/sign_out' method: :delete >Log Out</a>
+</div>
+   </div>
+ </div>
+ <h3> Edit Details</h3><br>
+
+
+<%=form_for @associate, url: associates_path(id: @associate.id)  do |f| %>
+
+ <%= f.label :REASON %><br>
+ <%= f.text_field :leave_approval%><br>
+ <br>
+    <%= f.label :START_DATE %><br>
+    <%= f.date_field :start_date%><br>
+ <br>
+    <%= f.label :END_DATE %><br>
+    <%= f.date_field :end_date%><br>
+ <br>
+ <%= f.label :leave_type %><br>
+ <%= f.select  :type_of_request, ["Work From Home","Vacation"]%><br>
+ <br>
+
+<tr>
+  <input type="submit", edit_associate_path(associate.id); value="Update"%></td>
+  <%= f.submit "Cancel" %>
+  </tr>
+  <% end %>

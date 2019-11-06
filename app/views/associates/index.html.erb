@@ -1,0 +1,81 @@
+<div class="navbar navbar-default navbar-static-top">
+   <div class="container">
+   <div>
+    <a class="navbar-brand" href="#" >Associate-Manager Interaction Portal</a>
+    <%= link_to "Log Out", destroy_user_session_path, class: "navbar-brand navbar-right" %>
+</div>
+   </div>
+ </div>
+
+  <table>
+     <% if current_user[:role]=="manager" %>
+     <h3> <%= t 'associate.attributes.leave Requests'%> </h3>
+    <thead>
+      <tr>
+      <th>REASON</th>
+      <th>START DATE</th>
+      <th>END DATE</th>
+      <th>LEAVE TYPE</th>
+      <th>STATUS</th>
+   </tr></thead>
+   <tbody>
+      <% @associates_to_approve.each do |associate| %>
+        <tr>
+          <td><%= associate.leave_approval %></td>
+          <td><%=associate.start_date.strftime("%d/%m/%Y") %></td>
+          <td><%= associate.end_date.strftime("%d/%m/%Y") %></td>
+          <td><%= associate.type_of_request %></td>
+          <td>
+            <% if associate.status.present? %>
+              <%= associate.status %>
+            <% else %>
+              <%= link_to "<button>Accept</button>".html_safe, accept_request_path(id: associate.id) %>
+              <%= link_to "<button>Reject</button>".html_safe, cancel_request_path(id: associate.id) %>
+            <% end %>
+          </td>
+        </tr>
+   <%end%>
+ <%end%>
+
+   </tbody>
+
+
+</table>
+<% if current_user[:role]=="manager"  %>
+<%= will_paginate @associates, renderer: BootstrapPagination::Rails, previous_label: "Previous" , next_label: "Next", inner_window: 1,outer_window: 0 %>
+<%end%>
+
+ <table>
+  <% if current_user[:role]=="associate" || current_user[:role]=="manager" %>
+  <h3> Apply For Leave </h3>
+<p align="right">
+<input type="button" onclick="window.location.href = '/associates/new';" value="New Requests"/>
+</p>
+  <thead>
+    <tr>
+    <th>REASON</th>
+    <th>START DATE</th>
+    <th>END DATE</th>
+    <th>LEAVE TYPE</th>
+    <th>EDIT</th>
+    <th>STATUS</th>
+</tr>
+  </thead>
+<tbody>
+
+     <% @associates.each do |associate| %>
+       <tr>
+        <td><%= associate.leave_approval %></td>
+        <td><%=associate.start_date.strftime("%d/%m/%Y") %></td>
+        <td><%= associate.end_date.strftime("%d/%m/%Y") %></td>
+        <td><%= associate.type_of_request %></td>
+        <td><input type="button" onclick="window.location.href = '/associates/edit?id=<%= associate.id %>';" value="Edit"%></td>
+        <td><%= associate.status || 'Pending' %></td>
+        </tr>
+          <% end %>
+<%end%>
+
+
+  </tbody>
+</table>
+<%= will_paginate @associates, renderer: BootstrapPagination::Rails, previous_label: "Previous" , next_label: "Next", inner_window: 1,outer_window: 0 %>

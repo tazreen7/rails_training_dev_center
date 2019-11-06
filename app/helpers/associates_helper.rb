@@ -1,2 +1,3 @@
 module AssociatesHelper
+  
 end
