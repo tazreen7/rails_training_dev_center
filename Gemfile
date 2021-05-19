@@ -16,7 +16,7 @@ gem 'client_side_validations'
 gem 'jquery-rails'
 gem 'devise-bootstrap-views'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 gem 'devise'
 gem 'bcrypt'
 gem 'rspec', '~> 3.8'
